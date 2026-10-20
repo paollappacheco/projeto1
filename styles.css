@@ -1,0 +1,642 @@
+
+/* ===== Base ===== */
+.reveal {
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  font-size: 20px;
+  background-color: #ffffff;
+  color: #2d2f45;
+}
+
+.reveal .slides {
+  text-align: justify;
+}
+
+.reveal .slides section {
+  font-size: 0.88em;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+}
+
+.reveal .slides section li {
+  text-align: justify;
+}
+
+.reveal p,
+.reveal li {
+  line-height: 1.25;
+}
+
+.reveal p {
+  margin: 0.35em 0;
+}
+
+.reveal ul,
+.reveal ol {
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+}
+
+.reveal ul li,
+.reveal ol li {
+  margin-bottom: 0.18em;
+}
+
+.reveal ul li::marker {
+  color: #c07068;
+}
+
+/* ===== Títulos ===== */
+.reveal h1 {
+  font-family: "Montserrat", "Inter", sans-serif;
+  font-size: 1.8em;
+  line-height: 1.12;
+  font-weight: 800;
+  color: #2d2f45;
+  margin-bottom: 0.35em;
+}
+
+.reveal h2 {
+  font-family: "Montserrat", "Inter", sans-serif;
+  font-size: 1.35em;
+  line-height: 1.15;
+  font-weight: 700;
+  color: #5c607a;
+  margin-bottom: 0.4em;
+}
+
+.reveal h3 {
+  font-size: 1.08em;
+  line-height: 1.15;
+  font-weight: 600;
+  color: #c07068;
+  margin-bottom: 0.3em;
+}
+
+/* ===== Slide de título ===== */
+.reveal #title-slide {
+  text-align: left !important;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(45, 47, 69, 0.88),
+      rgba(92, 96, 122, 0.72),
+      rgba(92, 96, 122, 0.45)
+    ),
+    url("capa_bebidas.png");
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+}
+
+.reveal #title-slide h1,
+.reveal #title-slide h2,
+.reveal #title-slide p,
+.reveal #title-slide .subtitle,
+.reveal #title-slide .author,
+.reveal #title-slide .institute,
+.reveal #title-slide .date {
+  color: #ffffff !important;
+}
+
+.reveal #title-slide h1 {
+  font-size: 1.9em;
+  line-height: 1.15;
+  max-width: 950px;
+}
+
+.reveal #title-slide h1::before {
+  content: "";
+  display: block;
+  width: 75px;
+  height: 6px;
+  border-radius: 4px;
+  background: #c07068;
+  margin-bottom: 22px;
+}
+
+.reveal #title-slide .subtitle {
+  font-size: 0.9em;
+  line-height: 1.25;
+}
+
+.reveal #title-slide .author,
+.reveal #title-slide .institute,
+.reveal #title-slide .date {
+  font-size: 0.68em;
+}
+
+/* ===== Slides divisores de seção ===== */
+/* Aplicar a classe .secao-slide no slide que deve usar a capa. */
+.reveal section.secao-slide {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(45, 47, 69, 0.84),
+      rgba(92, 96, 122, 0.65),
+      rgba(92, 96, 122, 0.38)
+    ),
+    url("capa_bebidas.png");
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  text-align: left;
+}
+
+.reveal section.secao-slide h1,
+.reveal section.secao-slide h2,
+.reveal section.secao-slide h3,
+.reveal section.secao-slide p {
+  color: #ffffff !important;
+}
+
+.reveal section.secao-slide h1 {
+  font-size: 2em;
+  line-height: 1.15;
+}
+
+/* ===== Efeito de vidro ===== */
+.reveal .slides section.glass {
+  background: rgba(92, 96, 122, 0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* ===== Caixas ===== */
+.box-salmon,
+.box-purple,
+.box-teal,
+.box-gray {
+  padding: 0.45em 0.65em;
+  margin: 0.35em 0;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(45, 47, 69, 0.08);
+  font-size: 0.92em;
+  line-height: 1.25;
+}
+
+.box-salmon {
+  border-left: 6px solid #c07068;
+  background: rgba(192, 112, 104, 0.08);
+}
+
+.box-purple {
+  border-left: 6px solid #5c607a;
+  background: rgba(92, 96, 122, 0.10);
+}
+
+.box-teal {
+  border-left: 6px solid #4c9a92;
+  background: rgba(76, 154, 146, 0.07);
+}
+
+.box-gray {
+  border-left: 6px solid #6b7280;
+  background: rgba(107, 114, 128, 0.08);
+}
+
+/* ===== Caixas alternativas do projeto ===== */
+.caixa {
+  background: #f4f5f8;
+  border-left: 5px solid #5c607a;
+  padding: 0.5em 0.7em;
+  border-radius: 6px;
+  margin: 0.35em 0;
+  font-size: 0.92em;
+  line-height: 1.25;
+}
+
+.caixa-destaque {
+  background: #fbf0ee;
+  border-left: 5px solid #c07068;
+  padding: 0.5em 0.7em;
+  border-radius: 6px;
+  margin: 0.35em 0;
+  font-size: 0.92em;
+  line-height: 1.25;
+}
+
+/* ===== Textos destacados ===== */
+.highlight-purple {
+  color: #5c607a;
+  font-weight: 700;
+}
+
+.highlight-salmon {
+  color: #c07068;
+  font-weight: 700;
+}
+
+.highlight-teal {
+  color: #4c9a92;
+  font-weight: 700;
+}
+
+.highlight-gray {
+  color: #6b7280;
+  font-weight: 700;
+}
+
+.reveal strong {
+  color: #2d2f45;
+}
+
+/* ===== Colunas ===== */
+.reveal .columns {
+  display: flex;
+  gap: 1em;
+  align-items: flex-start;
+}
+
+.reveal .column {
+  min-width: 0;
+}
+
+/* ===== Tabelas gerais ===== */
+.reveal table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.68em;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0.3em auto;
+}
+
+.reveal table th,
+.reveal table td {
+  padding: 5px 7px;
+  line-height: 1.15;
+  vertical-align: middle;
+}
+
+.reveal table th {
+  font-weight: 700;
+}
+
+/* ===== Tabelas com a classe tabela-tema ===== */
+.reveal table.tabela-tema thead th {
+  background-color: #4c9a92 !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  padding: 6px 7px;
+  text-align: left;
+  border-bottom: 3px solid #c07068;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.reveal table.tabela-tema tbody td {
+  padding: 5px 7px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.reveal table.tabela-tema tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.reveal table.tabela-tema tbody tr:hover {
+  background-color: #e0f2fe;
+}
+
+.reveal table.tabela-tema tbody td:first-child {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* ===== Tabelas do gt / gtsummary ===== */
+.reveal .gt_table {
+  margin: 0 auto !important;
+  width: 100% !important;
+  font-size: 20px !important;
+}
+
+.reveal .gt_table th,
+.reveal .gt_table td,
+.reveal .gt_table .gt_col_heading,
+.reveal .gt_table .gt_column_spanner,
+.reveal .gt_table .gt_row,
+.reveal .gt_table .gt_group_heading {
+  font-size: 20px !important;
+  padding: 5px 10px !important;
+  line-height: 1.2 !important;
+}
+
+.reveal .gt_table .gt_col_heading {
+  white-space: normal !important;
+}
+
+.reveal .gt_table .gt_sourcenote,
+.reveal .gt_table .gt_footnote {
+  font-size: 15px !important;
+  line-height: 1.25 !important;
+}
+
+/* tabelas qualitativas: muitas linhas, fonte média */
+.reveal .tabela-qualitativa .gt_table,
+.reveal .tabela-qualitativa .gt_table th,
+.reveal .tabela-qualitativa .gt_table td {
+  font-size: 21px !important;
+}
+
+/* tabela quantitativa */
+.reveal .tabela-quanti .gt_table,
+.reveal .tabela-quanti .gt_table th,
+.reveal .tabela-quanti .gt_table td {
+  font-size: 22px !important;
+  padding: 6px 10px !important;
+}
+
+.reveal .tabela-quanti .gt_table .gt_sourcenote,
+.reveal .tabela-quanti .gt_table .gt_footnote {
+  font-size: 16px !important;
+}
+
+.reveal .tabela-quanti .gt_table td:last-child {
+  min-width: 340px;
+}
+
+/* pressupostos */
+.reveal .tabela-pressupostos .gt_table,
+.reveal .tabela-pressupostos .gt_table th,
+.reveal .tabela-pressupostos .gt_table td {
+  font-size: 26px !important;
+  padding: 8px 12px !important;
+}
+
+
+/* ===== Tabela com corpo rolável ===== */
+.tabela-scroll {
+  display: block;
+  width: 100%;
+}
+
+.tabela-scroll thead {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.tabela-scroll tbody {
+  display: block;
+  max-height: 360px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.tabela-scroll tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* ===== Tabelas divididas em cabeçalho, corpo e rodapé ===== */
+.tabela-header table,
+.tabela-body-scroll table,
+.tabela-footer table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 0.68em;
+}
+
+.tabela-body-scroll {
+  overflow-y: auto;
+  max-height: 360px;
+  display: block;
+}
+
+.tabela-header {
+  overflow: hidden;
+  border-bottom: 2px solid #444444;
+}
+
+.tabela-footer {
+  overflow: hidden;
+  border-top: 2px solid #444444;
+}
+
+/* ===== Tabsets ===== */
+.reveal .panel-tabset [role="tablist"] {
+  gap: 5px;
+  margin-bottom: 8px;
+  border-bottom: 2px solid #4c9a92;
+}
+
+.reveal .panel-tabset [role="tab"] {
+  font-size: 0.62em;
+  padding: 5px 9px;
+  border-radius: 6px;
+  background: rgba(92, 96, 122, 0.07);
+  color: #5c607a;
+  border: none;
+  transition: background 0.2s ease;
+}
+
+.reveal .panel-tabset [role="tab"]:hover {
+  background: rgba(76, 154, 146, 0.15);
+  color: #4c9a92;
+}
+
+.reveal .panel-tabset [role="tab"][aria-selected="true"] {
+  background: #4c9a92;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ===== Slides com muito conteúdo ===== */
+.reveal .slides section.smaller {
+  font-size: 0.78em;
+}
+
+.reveal .slides section.scrollable {
+  height: 100%;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  padding-right: 0.35em;
+}
+
+/* ===== Código ===== */
+.reveal pre {
+  width: 100%;
+  font-size: 0.72em;
+}
+
+.reveal pre code {
+  font-size: 0.85em;
+  background: #2d2f45;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 0.7em;
+  max-height: 500px;
+}
+
+/* ===== Slide final ===== */
+/* Usa a imagem da capa como fundo quando a seção tiver .final-slide */
+.reveal section.final-slide {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(45, 47, 69, 0.70),
+      rgba(92, 96, 122, 0.45),
+      rgba(92, 96, 122, 0.25)
+    ),
+    url("capa_bebidas.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  text-align: center;
+}
+
+.reveal section.final-slide h1,
+.reveal section.final-slide h2,
+.reveal section.final-slide p {
+  color: #ffffff !important;
+}
+
+.reveal section.final-slide h1 {
+  font-size: 2.5em;
+}
+
+/* ===== Rodapé e numeração ===== */
+.reveal .footer {
+  font-size: 0.45em;
+  color: rgba(92, 96, 122, 0.75);
+}
+
+.reveal .slide-number {
+  color: #5c607a;
+  background: transparent;
+  font-size: 0.55em;
+}
+
+/* ===== Links ===== */
+.reveal a {
+  color: #4c9a92;
+}
+
+.reveal a:hover {
+  color: #c07068;
+}
+
+/* ===== Evita que imagens ultrapassem o slide ===== */
+.reveal section img {
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+}
+
+/* ===== Evita que elementos causem estouro horizontal ===== */
+.reveal section > * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* ===== Tooltips ===== */
+[title] {
+  border-bottom: 1px dotted currentColor;
+  cursor: help;
+}
+
+/* Texto dos slides */
+.reveal .slides section p,
+.reveal .slides section li {
+  font-size: 28px !important;
+  line-height: 1.4;
+}
+.reveal .slides section li li {
+  font-size: 25px !important;
+}
+.reveal .slides section h2 {
+  font-size: 44px !important;
+}
+.reveal .slides section blockquote,
+.reveal .slides section .callout {
+  font-size: 26px !important;
+}
+
+/*novo*/
+/* ===== Slides de capítulo (usam a capa como fundo) ===== */
+.reveal .slides section.secao {
+  text-align: left !important;
+  padding: 120px 0 0 140px !important;
+}
+
+.reveal .slides section.secao h1,
+.reveal .slides section.secao h2 {
+  color: #ffffff !important;
+  font-family: "Montserrat", "Inter", sans-serif;
+  font-weight: 800;
+  text-shadow: 0 2px 12px rgba(10, 20, 45, 0.6);
+}
+
+.reveal .slides section.secao h1 {
+  font-size: 80px !important;
+}
+
+.reveal .slides section.secao h2 {
+  font-size: 100px !important;
+}
+
+/* barra laranja acima do título */
+.reveal .slides section.secao h1::before,
+.reveal .slides section.secao h2::before {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 10px;
+  border-radius: 5px;
+  background: #e07b39;
+  margin-bottom: 36px;
+}
+
+
+/* ===== Tabelas de métodos (markdown) ===== */
+.reveal .slides section.metodos table {
+  width: 100% !important;
+  table-layout: fixed;
+  font-size: 28px !important;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0.6em 0 !important;
+  box-shadow: 0 3px 10px rgba(20, 38, 74, 0.12);
+}
+
+.reveal .slides section.metodos table th {
+  background: #1d3a63 !important;
+  color: #ffffff !important;
+  font-size: 26px !important;
+  font-weight: 700;
+  text-align: left !important;
+  padding: 16px 20px !important;
+  border-bottom: 4px solid #e07b39 !important;
+}
+
+.reveal .slides section.metodos table td {
+  color: #2d2f45 !important;
+  font-size: 26px !important;
+  line-height: 1.3 !important;
+  text-align: left !important;
+  padding: 16px 20px !important;
+  border-bottom: 1px solid #e3e6ee !important;
+  vertical-align: middle;
+}
+
+.reveal .slides section.metodos table tbody tr:nth-child(even) td {
+  background: #f4f6fa;
+}
+
+.reveal .slides section.metodos table td strong {
+  color: #1d3a63 !important;
+}
+
+/* larguras das colunas: método, para que serve, condição */
+.reveal .slides section.metodos table th:nth-child(1),
+.reveal .slides section.metodos table td:nth-child(1) { width: 30%; }
+.reveal .slides section.metodos table th:nth-child(2),
+.reveal .slides section.metodos table td:nth-child(2) { width: 30%; }
+.reveal .slides section.metodos table th:nth-child(3),
+.reveal .slides section.metodos table td:nth-child(3) { width: 40%; }
+

@@ -1,0 +1,242 @@
+---
+title: "Mudança no consumo de bebidas alcoólicas durante a pandemia de COVID-19"
+subtitle: "Fatores associados em um estudo com questionário online"
+author: "Paolla Pinheiro Pacheco (paollapp@id.uff.br)"
+institute: "UFF · Estatística · Prática Estatística 2"
+date: today
+date-format: "DD/MM/YYYY"
+format:
+  revealjs:
+    theme: default
+    css: styles.css
+    width: 1600
+    height: 900
+    margin: 0.055
+    center: false
+    slide-number: true
+    transition: fade
+    embed-resources: true
+    title-slide-attributes:
+      data-background-image: capa_bebidas.png
+      data-background-size: cover
+      data-background-position: center
+      data-background-color: "#14264a"
+      data-background-opacity: "0.45"
+---
+
+```{r}
+#| include: false
+source("funcoes.R")
+n_total <- nrow(base)
+tab_quali_1 <- montar_tabela_quali(c("Genero", "Raca_cor", "Regiao"))
+tab_quali_2 <- montar_tabela_quali(c("Trabalha", "Renda_familiar", "Escolaridade", "Dificuldade_Financeira"))
+tab_quali_3 <- montar_tabela_quali(c("Isolamento", "Covid", "Consulta_Nutricionista",
+                                     "cigarro", "Ansiedade", "Depressao", "Insonia", "Enxaqueca"))
+tabs_quanti <- montar_tabelas_quanti()
+```
+
+# 1-Introdução {.secao data-background-image="capa_bebidas.png" data-background-size="cover" data-background-position="center" data-background-color="#14264a" data-background-opacity="0.45"}
+
+## Contexto: a pandemia de COVID-19
+
+- Declarada em **março de 2020**, alterou a rotina de toda a população
+- **Social:** isolamento, escolas e serviços fechados, rotina doméstica reorganizada
+- **Econômico:** perda de renda, desemprego e insegurança financeira
+- **Comportamental:** estresse, ansiedade, mudança de sono e de hábitos
+
+::: caixa
+Essas mudanças afetaram **o que, quanto e como** as pessoas comem e bebem.
+:::
+
+## Hábitos alimentares e bebidas alcoólicas
+
+- Mais tempo em casa, mais refeições preparadas e mais compras planejadas
+- O consumo de álcool pode **aumentar** (estresse, tédio) ou **diminuir** (menos eventos sociais, menos renda)
+- Perfil socioeconômico e saúde emocional podem influenciar esse comportamento
+
+::: caixa-destaque
+**Variável resposta (foco do estudo):** mudança no consumo de bebidas alcoólicas durante a pandemia
+:::
+
+## Problema de pesquisa e objetivos
+
+**Problema:** quais características estão associadas à mudança no consumo de bebidas alcoólicas durante a pandemia?
+
+::: caixa
+**Objetivo geral:** avaliar a associação entre a mudança no consumo de bebidas alcoólicas e as demais variáveis do banco.
+:::
+
+- Descrever a distribuição da variável resposta
+- Testar a associação com variáveis **qualitativas** (sociodemográficas, de saúde e hábitos)
+- Comparar variáveis **quantitativas** (idade, altura, peso e IMC) entre as categorias da resposta
+
+# 2-Metodologia {.secao data-background-image="capa_bebidas.png" data-background-size="cover" data-background-position="center" data-background-color="#14264a" data-background-opacity="0.45"}
+
+
+## Dados
+
+- **Origem:** questionário online aplicado em **2022**
+- **Amostra:** **`r n_total`** participantes
+- **Variável resposta:** mudança no consumo de bebidas alcoólicas, com 4 categorias: *Aumentou*, *Diminuiu*, *Não alterou* e *Não consumo*
+- **Nível de significância:** **5%**
+
+```{r}
+#| fig-height: 3.2
+#| fig-width: 10
+base |>
+  count(Bebidas_Alcoolicas) |>
+  mutate(pct = n / sum(n)) |>
+  ggplot(aes(x = reorder(Bebidas_Alcoolicas, -n), y = pct)) +
+  geom_col(fill = "#3E6FA3", width = .6) +
+  geom_text(aes(label = paste0(n, " (", scales::percent(pct, accuracy = .1, decimal.mark = ","), ")")),
+            vjust = -.4, size = 5) +
+  scale_y_continuous(labels = scales::percent, expand = expansion(mult = c(0, .15))) +
+  labs(x = NULL, y = "Proporção") +
+  theme_minimal(base_size = 16)
+```
+
+## Variáveis explicativas
+
+::: {.columns}
+::: {.column width="50%"}
+**Categóricas (15)**
+
+- Sociodemográficas: gênero, raça/cor, região, trabalho, renda familiar, escolaridade
+- Contexto: isolamento social, COVID-19, dificuldade financeira
+- Saúde e hábitos: consulta com nutricionista, tabagismo, ansiedade, depressão, insônia, enxaqueca
+:::
+::: {.column width="50%"}
+**Contínuas (4)**
+
+- Idade (anos)
+- Altura (m)
+- Peso (kg)
+- IMC (kg/m²)
+
+::: caixa
+Categorias pequenas de raça/cor, escolaridade e gênero foram **agrupadas** para garantir contagens adequadas.
+:::
+:::
+:::
+
+## Métodos: variáveis qualitativas {.metodos}
+
+| Método | Para que serve | Condição |
+|---|---|---|
+| **Qui-quadrado de Pearson** | testar independência | esperados ≥ 5 nas caselas |
+| **Teste exato de Fisher** (simulado) | alternativa ao qui-quadrado | usado em *gênero* e *escolaridade* (esperados < 5) |
+| **V de Cramér** | intensidade da associação | tabelas de contingência |
+| **Resíduos padronizados** | identificar caselas influentes | analisados só se p < 0,05; \|z\| > 1,96 |
+
+## Métodos: variáveis quantitativas {.metodos}
+
+| Método | Para que serve | Condição |
+|---|---|---|
+| **Shapiro-Wilk** e gráficos | avaliar normalidade por grupo | inspeção visual + teste |
+| **Levene** | homogeneidade de variâncias | define qual ANOVA usar |
+| **ANOVA clássica** | comparar médias | variâncias homogêneas |
+| **ANOVA de Welch** | comparar médias | variâncias heterogêneas |
+| **Tukey / Games-Howell** | comparações múltiplas | após ANOVA significativa |
+
+::: caixa
+**Pacotes do R:** tidyverse, readxl, gtsummary, gt, rstatix, DescTools · **Quarto** para os slides
+:::
+
+# 3-Resultados {.secao data-background-image="capa_bebidas.png" data-background-size="cover" data-background-position="center" data-background-color="#14264a" data-background-opacity="0.45"}
+
+## Variáveis qualitativas (1/3): perfil sociodemográfico {.smaller}
+
+::: {.tabela-container .tabela-qualitativa}
+```{r}
+tab_quali_1
+```
+:::
+
+## Variáveis qualitativas (2/3): trabalho, renda e escolaridade {.smaller}
+
+::: {.tabela-container .tabela-qualitativa}
+```{r}
+tab_quali_2
+```
+:::
+
+## Variáveis qualitativas (3/3): contexto, saúde e hábitos {.smaller .scrollable}
+
+::: {.tabela-container .tabela-qualitativa}
+```{r}
+tab_quali_3
+```
+:::
+
+## Interpretação: variáveis qualitativas
+
+- **Sem associação:** gênero, raça/cor, consulta com nutricionista, insônia e enxaqueca
+- **Associação com maior intensidade (V de Cramér):** situação de trabalho, dificuldade financeira, ansiedade e renda, todas de **intensidade fraca**
+- **Trabalho, renda e escolaridade:** maior renda e pós-graduação com mais *Aumentou* e *Não alterou*; menor renda com mais *Não consumo*
+- **Dificuldade financeira:** mais *Diminuiu* e *Não consumo* e menos *Não alterou*
+- **Saúde e hábitos:** ansiedade com mais *Diminuiu*; tabagismo com mais *Aumentou*
+
+## Variáveis quantitativas {.smaller}
+
+::: {.tabela-container .tabela-quanti}
+```{r}
+tabs_quanti$final
+```
+:::
+
+## Pressupostos das variáveis quantitativas {.smaller}
+
+::: {.tabela-container .tabela-pressupostos}
+```{r}
+tabs_quanti$pressupostos
+```
+:::
+
+::: caixa
+Com amostra grande, o Shapiro-Wilk rejeita a normalidade com facilidade; a ANOVA é considerada **robusta** nesse cenário, e a homogeneidade (Levene) define o teste.
+:::
+
+## Interpretação: variáveis quantitativas
+
+- **Idade:** diferença entre as categorias; quem **não alterou** o consumo tende a ser mais velho
+- **Altura:** diferença estatística pequena, de cerca de 1 cm, de pouca relevância prática
+- **Peso e IMC:** **sem diferença** entre as categorias
+
+# 4-Síntese {.secao data-background-image="capa_bebidas.png" data-background-size="cover" data-background-position="center" data-background-color="#14264a" data-background-opacity="0.45"}
+
+## Principais achados
+
+::: {.columns}
+::: {.column width="50%"}
+::: caixa
+**Qualitativas, com associação (p < 0,05)**
+
+- Região, trabalho, renda familiar, escolaridade
+- Dificuldade financeira, isolamento, COVID-19
+- Tabagismo, ansiedade, depressão
+:::
+:::
+::: {.column width="50%"}
+::: caixa
+**Quantitativas**
+
+- Associação com **idade** e **altura** (esta com pouca relevância prática)
+- Sem associação com **peso** e **IMC**
+:::
+::: caixa-destaque
+As associações são, em geral, de **intensidade fraca** (V de Cramér abaixo de 0,20).
+:::
+:::
+:::
+
+# 5-Conclusão {.secao data-background-image="capa_bebidas.png" data-background-size="cover" data-background-position="center" data-background-color="#14264a" data-background-opacity="0.45"}
+
+## Conclusão
+
+- **Objetivo:** avaliar a associação entre a mudança no consumo de bebidas alcoólicas e as demais variáveis
+- Condições **socioeconômicas** (trabalho, renda, escolaridade, dificuldade financeira) e **emocionais** (ansiedade, depressão) estiveram associadas à mudança
+- Possível leitura: renda e trabalho influenciam o **acesso** ao álcool; sofrimento emocional pode alterar o consumo
+- **Limitações:** estudo transversal, dados autorrelatados, questionário online (possível viés de seleção); as associações **não indicam causalidade**
+
+
+# Obrigada! {.secao data-background-image="capa_bebidas.png" data-background-size="cover" data-background-position="center" data-background-color="#14264a" data-background-opacity="0.45"}
