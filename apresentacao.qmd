@@ -11,7 +11,7 @@ format:
     css: styles.css
     width: 1600
     height: 900
-    margin: 0.055
+    margin: 0.03
     center: false
     slide-number: true
     transition: fade
@@ -37,28 +37,31 @@ tabs_quanti <- montar_tabelas_quanti()
 
 # 1-Introdução {.secao data-background-image="capa_bebidas.png" data-background-size="cover" data-background-position="center" data-background-color="#14264a" data-background-opacity="0.45"}
 
-## Contexto: a pandemia de COVID-19
+## Contexto: a pandemia de COVID-19 {.center}
 
+:::  caixa
 - Declarada em **março de 2020**, alterou a rotina de toda a população
 - **Social:** isolamento, escolas e serviços fechados, rotina doméstica reorganizada
 - **Econômico:** perda de renda, desemprego e insegurança financeira
 - **Comportamental:** estresse, ansiedade, mudança de sono e de hábitos
-
-::: caixa
-Essas mudanças afetaram **o que, quanto e como** as pessoas comem e bebem.
 :::
 
-## Hábitos alimentares e bebidas alcoólicas
+::: caixa
+Essas mudanças afetaram **o que, quanto e como** as pessoas se alimentam.
+:::
 
-- Mais tempo em casa, mais refeições preparadas e mais compras planejadas
-- O consumo de álcool pode **aumentar** (estresse, tédio) ou **diminuir** (menos eventos sociais, menos renda)
-- Perfil socioeconômico e saúde emocional podem influenciar esse comportamento
+## Hábitos alimentares e bebidas alcoólicas {.center}
 
 ::: caixa-destaque
 **Variável resposta (foco do estudo):** mudança no consumo de bebidas alcoólicas durante a pandemia
 :::
 
-## Problema de pesquisa e objetivos
+::: caixa
+- O consumo de álcool pode **aumentar** (estresse, tédio) ou **diminuir** (menos eventos sociais, menos renda)
+- Perfil socioeconômico e saúde emocional podem influenciar esse comportamento
+:::
+
+## Problema de pesquisa e objetivos {.center}
 
 **Problema:** quais características estão associadas à mudança no consumo de bebidas alcoólicas durante a pandemia?
 
@@ -66,7 +69,6 @@ Essas mudanças afetaram **o que, quanto e como** as pessoas comem e bebem.
 **Objetivo geral:** avaliar a associação entre a mudança no consumo de bebidas alcoólicas e as demais variáveis do banco.
 :::
 
-- Descrever a distribuição da variável resposta
 - Testar a associação com variáveis **qualitativas** (sociodemográficas, de saúde e hábitos)
 - Comparar variáveis **quantitativas** (idade, altura, peso e IMC) entre as categorias da resposta
 
@@ -75,10 +77,13 @@ Essas mudanças afetaram **o que, quanto e como** as pessoas comem e bebem.
 
 ## Dados
 
+::: caixa
 - **Origem:** questionário online aplicado em **2022**
+- **Coleta:* alunas da pós-graduação em Nutrição na UFF
 - **Amostra:** **`r n_total`** participantes
 - **Variável resposta:** mudança no consumo de bebidas alcoólicas, com 4 categorias: *Aumentou*, *Diminuiu*, *Não alterou* e *Não consumo*
 - **Nível de significância:** **5%**
+:::
 
 ```{r}
 #| fig-height: 3.2
@@ -95,23 +100,29 @@ base |>
   theme_minimal(base_size = 16)
 ```
 
-## Variáveis explicativas
+## Variáveis explicativas {.center}
 
 ::: {.columns}
 ::: {.column width="50%"}
-**Categóricas (15)**
+
+::: caixa
+**Qualitativas (15)**
 
 - Sociodemográficas: gênero, raça/cor, região, trabalho, renda familiar, escolaridade
 - Contexto: isolamento social, COVID-19, dificuldade financeira
 - Saúde e hábitos: consulta com nutricionista, tabagismo, ansiedade, depressão, insônia, enxaqueca
 :::
+:::
 ::: {.column width="50%"}
-**Contínuas (4)**
+
+::: caixa
+**Quantitativas (4)**
 
 - Idade (anos)
 - Altura (m)
 - Peso (kg)
 - IMC (kg/m²)
+:::
 
 ::: caixa
 Categorias pequenas de raça/cor, escolaridade e gênero foram **agrupadas** para garantir contagens adequadas.
@@ -119,16 +130,16 @@ Categorias pequenas de raça/cor, escolaridade e gênero foram **agrupadas** par
 :::
 :::
 
-## Métodos: variáveis qualitativas {.metodos}
+## Métodos: variáveis qualitativas {.metodos .center}
 
 | Método | Para que serve | Condição |
 |---|---|---|
 | **Qui-quadrado de Pearson** | testar independência | esperados ≥ 5 nas caselas |
-| **Teste exato de Fisher** (simulado) | alternativa ao qui-quadrado | usado em *gênero* e *escolaridade* (esperados < 5) |
+| **Teste exato de Fisher**  | alternativa ao qui-quadrado | usado em *gênero* e *escolaridade* (esperados < 5) |
 | **V de Cramér** | intensidade da associação | tabelas de contingência |
 | **Resíduos padronizados** | identificar caselas influentes | analisados só se p < 0,05; \|z\| > 1,96 |
 
-## Métodos: variáveis quantitativas {.metodos}
+## Métodos: variáveis quantitativas {.metodos .center}
 
 | Método | Para que serve | Condição |
 |---|---|---|
@@ -152,7 +163,7 @@ tab_quali_1
 ```
 :::
 
-## Variáveis qualitativas (2/3): trabalho, renda e escolaridade {.smaller}
+## Variáveis qualitativas (2/3): trabalho, renda e escolaridade {.smaller .scrollable}
 
 ::: {.tabela-container .tabela-qualitativa}
 ```{r}
@@ -168,15 +179,17 @@ tab_quali_3
 ```
 :::
 
-## Interpretação: variáveis qualitativas
+## Interpretação: variáveis qualitativas {.center}
 
+::: caixa
 - **Sem associação:** gênero, raça/cor, consulta com nutricionista, insônia e enxaqueca
 - **Associação com maior intensidade (V de Cramér):** situação de trabalho, dificuldade financeira, ansiedade e renda, todas de **intensidade fraca**
 - **Trabalho, renda e escolaridade:** maior renda e pós-graduação com mais *Aumentou* e *Não alterou*; menor renda com mais *Não consumo*
 - **Dificuldade financeira:** mais *Diminuiu* e *Não consumo* e menos *Não alterou*
 - **Saúde e hábitos:** ansiedade com mais *Diminuiu*; tabagismo com mais *Aumentou*
+:::
 
-## Variáveis quantitativas {.smaller}
+## Variáveis quantitativas {.smaller .sublinhado .center}
 
 ::: {.tabela-container .tabela-quanti}
 ```{r}
@@ -184,7 +197,7 @@ tabs_quanti$final
 ```
 :::
 
-## Pressupostos das variáveis quantitativas {.smaller}
+## Pressupostos das variáveis quantitativas {.smaller .center}
 
 ::: {.tabela-container .tabela-pressupostos}
 ```{r}
@@ -196,15 +209,17 @@ tabs_quanti$pressupostos
 Com amostra grande, o Shapiro-Wilk rejeita a normalidade com facilidade; a ANOVA é considerada **robusta** nesse cenário, e a homogeneidade (Levene) define o teste.
 :::
 
-## Interpretação: variáveis quantitativas
+## Interpretação: variáveis quantitativas {.center}
 
+::: caixa
 - **Idade:** diferença entre as categorias; quem **não alterou** o consumo tende a ser mais velho
 - **Altura:** diferença estatística pequena, de cerca de 1 cm, de pouca relevância prática
 - **Peso e IMC:** **sem diferença** entre as categorias
+:::
 
 # 4-Síntese {.secao data-background-image="capa_bebidas.png" data-background-size="cover" data-background-position="center" data-background-color="#14264a" data-background-opacity="0.45"}
 
-## Principais achados
+## Principais achados {.center}
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -231,12 +246,13 @@ As associações são, em geral, de **intensidade fraca** (V de Cramér abaixo d
 
 # 5-Conclusão {.secao data-background-image="capa_bebidas.png" data-background-size="cover" data-background-position="center" data-background-color="#14264a" data-background-opacity="0.45"}
 
-## Conclusão
+## Conclusão {.center}
 
+::: caixa
 - **Objetivo:** avaliar a associação entre a mudança no consumo de bebidas alcoólicas e as demais variáveis
 - Condições **socioeconômicas** (trabalho, renda, escolaridade, dificuldade financeira) e **emocionais** (ansiedade, depressão) estiveram associadas à mudança
 - Possível leitura: renda e trabalho influenciam o **acesso** ao álcool; sofrimento emocional pode alterar o consumo
 - **Limitações:** estudo transversal, dados autorrelatados, questionário online (possível viés de seleção); as associações **não indicam causalidade**
-
+:::
 
 # Obrigada! {.secao data-background-image="capa_bebidas.png" data-background-size="cover" data-background-position="center" data-background-color="#14264a" data-background-opacity="0.45"}

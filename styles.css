@@ -1,80 +1,18 @@
-
-/* ===== Base ===== */
-.reveal {
-  font-family: "Inter", "Segoe UI", Arial, sans-serif;
-  font-size: 20px;
-  background-color: #ffffff;
-  color: #2d2f45;
-}
-
-.reveal .slides {
-  text-align: justify;
-}
-
-.reveal .slides section {
-  font-size: 0.88em;
-  box-sizing: border-box;
-  overflow-wrap: break-word;
-}
-
-.reveal .slides section li {
-  text-align: justify;
-}
-
-.reveal p,
-.reveal li {
-  line-height: 1.25;
-}
-
-.reveal p {
-  margin: 0.35em 0;
-}
-
-.reveal ul,
-.reveal ol {
-  margin-top: 0.3em;
-  margin-bottom: 0.3em;
-}
-
-.reveal ul li,
-.reveal ol li {
-  margin-bottom: 0.18em;
-}
-
-.reveal ul li::marker {
-  color: #c07068;
-}
-
-/* ===== Títulos ===== */
-.reveal h1 {
-  font-family: "Montserrat", "Inter", sans-serif;
-  font-size: 1.8em;
-  line-height: 1.12;
-  font-weight: 800;
-  color: #2d2f45;
-  margin-bottom: 0.35em;
-}
-
-.reveal h2 {
-  font-family: "Montserrat", "Inter", sans-serif;
-  font-size: 1.35em;
-  line-height: 1.15;
-  font-weight: 700;
-  color: #5c607a;
-  margin-bottom: 0.4em;
-}
-
-.reveal h3 {
-  font-size: 1.08em;
-  line-height: 1.15;
-  font-weight: 600;
-  color: #c07068;
-  margin-bottom: 0.3em;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap');
 
 /* ===== Slide de título ===== */
 .reveal #title-slide {
-  text-align: left !important;
+  text-align: center !important;
+
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: center !important;
+
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 40px 80px !important;
+
   background:
     linear-gradient(
       135deg,
@@ -83,11 +21,13 @@
       rgba(92, 96, 122, 0.45)
     ),
     url("capa_bebidas.png");
+
   background-size: cover;
   background-position: center;
   color: #ffffff;
 }
 
+/* Centralizar os textos */
 .reveal #title-slide h1,
 .reveal #title-slide h2,
 .reveal #title-slide p,
@@ -96,14 +36,19 @@
 .reveal #title-slide .institute,
 .reveal #title-slide .date {
   color: #ffffff !important;
+  text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* Título */
 .reveal #title-slide h1 {
   font-size: 1.9em;
   line-height: 1.15;
   max-width: 950px;
 }
 
+/* Traço decorativo acima do título */
 .reveal #title-slide h1::before {
   content: "";
   display: block;
@@ -111,14 +56,16 @@
   height: 6px;
   border-radius: 4px;
   background: #c07068;
-  margin-bottom: 22px;
+  margin: 0 auto 22px auto;
 }
 
+/* Subtítulo */
 .reveal #title-slide .subtitle {
   font-size: 0.9em;
   line-height: 1.25;
 }
 
+/* Autor, instituição e data */
 .reveal #title-slide .author,
 .reveal #title-slide .institute,
 .reveal #title-slide .date {
@@ -338,22 +285,6 @@
   font-size: 21px !important;
 }
 
-/* tabela quantitativa */
-.reveal .tabela-quanti .gt_table,
-.reveal .tabela-quanti .gt_table th,
-.reveal .tabela-quanti .gt_table td {
-  font-size: 22px !important;
-  padding: 6px 10px !important;
-}
-
-.reveal .tabela-quanti .gt_table .gt_sourcenote,
-.reveal .tabela-quanti .gt_table .gt_footnote {
-  font-size: 16px !important;
-}
-
-.reveal .tabela-quanti .gt_table td:last-child {
-  min-width: 340px;
-}
 
 /* pressupostos */
 .reveal .tabela-pressupostos .gt_table,
@@ -639,4 +570,117 @@
 .reveal .slides section.metodos table td:nth-child(2) { width: 30%; }
 .reveal .slides section.metodos table th:nth-child(3),
 .reveal .slides section.metodos table td:nth-child(3) { width: 40%; }
+
+/* cabeçalho fixo ao rolar a tabela */
+.reveal .tabela-qualitativa div {
+  overflow: visible !important;
+}
+
+.reveal .tabela-qualitativa .gt_table {
+  overflow: visible !important;
+}
+
+.reveal .tabela-qualitativa .gt_table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.reveal .tabela-qualitativa .gt_table thead th,
+.reveal .tabela-qualitativa .gt_table thead td {
+  background-color: #ffffff !important;
+  box-shadow: 0 2px 0 #d9dde6;
+}
+
+
+/* ===== Caixas mais nítidas ===== */
+.reveal .slides section .caixa,
+.reveal .slides section .caixa-destaque {
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  font-weight: 500;
+  color: #1b2540;
+  padding: 0.6em 0.9em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.reveal .slides section .caixa p,
+.reveal .slides section .caixa li,
+.reveal .slides section .caixa-destaque p,
+.reveal .slides section .caixa-destaque li {
+  font-size: 30px !important;
+  font-weight: 500;
+  color: #1b2540 !important;
+  line-height: 1.4;
+}
+
+.reveal .slides section .caixa strong,
+.reveal .slides section .caixa-destaque strong {
+  color: #14264a !important;
+  font-weight: 700;
+}
+
+/* cores iguais às da capa */
+.reveal .slides section .caixa {
+  background: #eef2f8;
+  border-left: 6px solid #1d3a63;
+}
+
+.reveal .slides section .caixa-destaque {
+  background: #fff3ea;
+  border-left: 6px solid #e07b39;
+}
+
+
+/* ===== Fonte em todo o texto dos slides ===== */
+.reveal .slides section p,
+.reveal .slides section li,
+.reveal .slides section strong,
+.reveal .slides section em,
+.reveal .slides section blockquote {
+  font-family: "Inter", "Segoe UI", Arial, sans-serif !important;
+}
+
+.reveal .slides section h1,
+.reveal .slides section h2,
+.reveal .slides section h3 {
+  font-family: "Montserrat", "Inter", "Segoe UI", sans-serif !important;
+}
+
+
+/* ===== Tabela quantitativa ===== */
+.reveal .tabela-quanti .gt_table,
+.reveal .tabela-quanti .gt_table th,
+.reveal .tabela-quanti .gt_table td {
+  font-size: 25px !important;
+  padding: 8px 10px !important;
+  line-height: 1.2 !important;
+}
+
+/* Comparações Múltiplas: cada comparação inteira numa linha só */
+.reveal .tabela-quanti .gt_table td:last-child,
+.reveal .tabela-quanti .gt_table th:last-child {
+  white-space: nowrap !important;
+}
+
+.reveal .tabela-quanti .gt_table .gt_sourcenote,
+.reveal .tabela-quanti .gt_table .gt_footnote {
+  font-size: 17px !important;
+}
+
+/* título sublinhado de laranja */
+.reveal .slides section.sublinhado h2 {
+  text-decoration: underline;
+  text-decoration-color: #e07b39;
+  text-decoration-thickness: 6px;
+  text-underline-offset: 12px;
+}
+
+
+/* qualitativas: nome da variável e da categoria em uma linha só */
+.reveal .tabela-qualitativa .gt_table tbody td:first-child,
+.reveal .tabela-qualitativa .gt_table tbody th:first-child,
+.reveal .tabela-qualitativa .gt_table thead th:first-child {
+  white-space: nowrap !important;
+}
 

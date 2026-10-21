@@ -87,15 +87,15 @@ aplicar_residuos <- function(tbl, dados, by = var_by) {
     for (j in seq_along(nv)) {
       col <- paste0("stat_", j)
       x[[col]] <- pmap_chr(list(x$variable, x$label, x$row_type, x[[col]]),
-        function(v, l, tipo, txt) {
-          if (tipo != "level" || is.na(txt) || !(l %in% rownames(res[[v]]))) return(txt)
-          if (is.na(pv[[v]]) || pv[[v]] >= alfa) return(txt)
-          z <- res[[v]][l, j]
-          if (is.na(z)) return(txt)
-          if (z < -limite) paste0("<span style='color:", cor_baixo, ";font-weight:bold'>", txt, " &#9660;</span>")
-          else if (z > limite) paste0("<span style='color:", cor_alto, ";font-weight:bold'>", txt, " &#9650;</span>")
-          else txt
-        })
+                           function(v, l, tipo, txt) {
+                             if (tipo != "level" || is.na(txt) || !(l %in% rownames(res[[v]]))) return(txt)
+                             if (is.na(pv[[v]]) || pv[[v]] >= alfa) return(txt)
+                             z <- res[[v]][l, j]
+                             if (is.na(z)) return(txt)
+                             if (z < -limite) paste0("<span style='color:", cor_baixo, ";font-weight:bold'>", txt, " &#9660;</span>")
+                             else if (z > limite) paste0("<span style='color:", cor_alto, ";font-weight:bold'>", txt, " &#9650;</span>")
+                             else txt
+                           })
     }
     x
   })
@@ -108,7 +108,7 @@ montar_tabela_quali <- function(vars, tamanho = "13px") {
   args <- if (length(fv) > 0) lapply(fv, function(v)
     as.formula(paste0(v, " ~ list(simulate.p.value = TRUE, B = 10000)"))) else NULL
   set.seed(123)
-
+  
   tbl_summary(dados_quali, include = all_of(vars), by = all_of(var_by),
               percent = "row", label = rotulos[vars]) |>
     add_p(test = testes, test.args = args, pvalue_fun = label_style_pvalue(digits = 3)) |>
@@ -137,7 +137,7 @@ montar_tabela_quali <- function(vars, tamanho = "13px") {
 
 # ---------------- Tabela quantitativa ----------------
 montar_tabelas_quanti <- function(tamanho = "14px") {
-
+  
   pressupostos <- map_dfr(vars_quanti, function(v) {
     sh  <- tapply(base_1[[v]], base_1[[var_by]], function(x) shapiro.test(x)$p.value)
     lev <- LeveneTest(as.formula(paste(v, "~", var_by)), data = base_1)$`Pr(>F)`[1]
@@ -149,7 +149,7 @@ montar_tabelas_quanti <- function(tamanho = "14px") {
     gt() |>
     tab_options(table.font.size = tamanho, column_labels.font.size = tamanho,
                 data_row.padding = px(3))
-
+  
   analisar <- function(v) {
     f <- as.formula(paste(v, "~", var_by))
     lev <- LeveneTest(f, data = base_1)$`Pr(>F)`[1]
@@ -175,7 +175,7 @@ montar_tabelas_quanti <- function(tamanho = "14px") {
          homog = homog, comp = texto)
   }
   resultados <- setNames(lapply(vars_quanti, analisar), vars_quanti)
-
+  
   testes_q <- lapply(vars_quanti, function(v) as.formula(paste0(v, ' ~ "oneway.test"')))
   args_q <- lapply(vars_quanti, function(v)
     as.formula(paste0(v, " ~ list(var.equal = ", resultados[[v]]$homog, ")")))
@@ -183,7 +183,7 @@ montar_tabelas_quanti <- function(tamanho = "14px") {
   col_teste  <- function(data, variable, by, ...) tibble::tibble(`**Teste**` = resultados[[variable]]$teste)
   col_comp   <- function(data, variable, by, ...) tibble::tibble(`**Comparações Múltiplas**` = resultados[[variable]]$comp)
   ultima_stat <- paste0("stat_", length(niveis))
-
+  
   final <- tbl_summary(base_1, by = all_of(var_by), statistic = all_continuous() ~ "{mean} ({sd})",
                        label = list(Idade ~ "Idade (anos)", Altura ~ "Altura (m)",
                                     Peso ~ "Peso (kg)", IMC ~ "IMC (kg/m²)")) |>
@@ -210,6 +210,6 @@ montar_tabelas_quanti <- function(tamanho = "14px") {
       "Tukey (ANOVA clássica) ou Games-Howell (Welch). \"A > B\": média de A maior que a de B."))) |>
     tab_options(table.font.size = tamanho, column_labels.font.size = tamanho,
                 data_row.padding = px(4), table.width = pct(100))
-
+  
   list(pressupostos = pressupostos, final = final)
 }
