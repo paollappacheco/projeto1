@@ -125,7 +125,7 @@ base |>
 :::
 
 ::: caixa
-Categorias pequenas de raça/cor, escolaridade e gênero foram **agrupadas** para garantir contagens adequadas.
+Categorias pequenas de Raça/Cor, Escolaridade e Gênero foram **agrupadas** para garantir contagens adequadas.
 :::
 :::
 :::
