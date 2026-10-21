@@ -79,7 +79,7 @@ Essas mudanças afetaram **o que, quanto e como** as pessoas se alimentam.
 
 ::: caixa
 - **Origem:** questionário online aplicado em **2022**
-- **Coleta:* alunas da pós-graduação em Nutrição na UFF
+- **Coleta:** alunas da pós-graduação em Nutrição na UFF
 - **Amostra:** **`r n_total`** participantes
 - **Variável resposta:** mudança no consumo de bebidas alcoólicas, com 4 categorias: *Aumentou*, *Diminuiu*, *Não alterou* e *Não consumo*
 - **Nível de significância:** **5%**
